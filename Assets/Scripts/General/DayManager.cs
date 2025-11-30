@@ -20,4 +20,15 @@ public class DayManager : MonoBehaviour
         currentDay++;
         StartNewDay();
     }
+
+    public int GetCurrentTargetFloor()
+    {
+        return currentTargetFloor;
+    }
+
+    private void Start()
+    {
+        // This runs automatically when you press Play
+        StartNewDay(); 
+    }
 }
