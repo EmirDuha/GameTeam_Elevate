@@ -283,7 +283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorNumber: 2
-  elevatorController: {fileID: 0}
+  elevatorController: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+  dayManager: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
 --- !u!1 &375651712391219670
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +840,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorNumber: 5
-  elevatorController: {fileID: 0}
+  elevatorController: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+  dayManager: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
 --- !u!1 &867895886687840132
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +989,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorNumber: 7
-  elevatorController: {fileID: 0}
+  elevatorController: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+  dayManager: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
 --- !u!1 &1412774671620607975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,7 +1208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorNumber: 4
-  elevatorController: {fileID: 0}
+  elevatorController: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+  dayManager: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
 --- !u!1 &2143793920731200276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,7 +1493,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorNumber: 1
-  elevatorController: {fileID: 0}
+  elevatorController: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+  dayManager: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
 --- !u!1 &3130888925311162879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,7 +1642,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorNumber: 3
-  elevatorController: {fileID: 0}
+  elevatorController: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+  dayManager: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
 --- !u!1 &3725265611304246983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,7 +1791,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorNumber: 9
-  elevatorController: {fileID: 0}
+  elevatorController: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+  dayManager: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
 --- !u!1 &4570013193613412384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,7 +2212,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorNumber: 6
-  elevatorController: {fileID: 0}
+  elevatorController: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+  dayManager: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
 --- !u!1 &5772843251338676831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,7 +2497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorNumber: 10
-  elevatorController: {fileID: 0}
+  elevatorController: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+  dayManager: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
 --- !u!1 &7394285766598853694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2773,7 +2782,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorNumber: 8
-  elevatorController: {fileID: 0}
+  elevatorController: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+  dayManager: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
 --- !u!1 &9129037069774956034
 GameObject:
   m_ObjectHideFlags: 0

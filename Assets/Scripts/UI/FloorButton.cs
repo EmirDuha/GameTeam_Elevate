@@ -5,6 +5,7 @@ public class FloorButton : MonoBehaviour
 {
     [SerializeField] private int floorNumber;
     [SerializeField] private ElevatorController elevatorController;
+    [SerializeField] private DayManager dayManager;
 
     public void Setup(int floor, ElevatorController controller)
     {
@@ -13,6 +14,11 @@ public class FloorButton : MonoBehaviour
     }
     public void OnClick()
     {
+        if (floorNumber <= dayManager.GetCurrentTargetFloor())
         elevatorController.GoToFloor(floorNumber);
+        else
+        {
+            Debug.Log("Cannot go to floor " + floorNumber + " yet.");
+        }
     }
 }
