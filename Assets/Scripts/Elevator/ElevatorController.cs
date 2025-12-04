@@ -6,55 +6,74 @@ public class ElevatorController : MonoBehaviour
     [Header("References")]
     [SerializeField] private DoorController doorController;
     [SerializeField] private DayManager dayManager;
+    [SerializeField] private BreakdownManager breakdownManager; // 🔥 EKLENDİ
 
     [Header("Settings")]
     [SerializeField] private float timePerFloor = 1.0f; // Her kat arası bekleme süresi
-    
+
     private int currentFloor = 1; // Başlangıç katı
     private bool isMoving = false;
 
     // UI Butonundan bu fonksiyon çağırılacak
     public void GoToFloor(int targetFloor)
     {
-        
+        if (breakdownManager != null && breakdownManager.IsInBreakdown) // 🔥 Arıza varsa hareket yok
+        {
+            Debug.Log("Asansör arızalı, butonlar devre dışı!");
+            return;
+        }
+
         if (isMoving || currentFloor == targetFloor) return;
 
-        
         StartCoroutine(MoveProcess(targetFloor));
     }
 
     private IEnumerator MoveProcess(int targetFloor)
     {
         isMoving = true;
-        Debug.Log("Asansör hareket ediyor...");
 
-        //  Kapıyı Otomatik Kitle
+        // Kapıyı Otomatik Kapat
         doorController.SetDoorState(DoorState.autoClosed);
 
         yield return new WaitForSeconds(0.5f);
 
-        //  Hareket Süresini Hesapla (Kat farkı * süre)
+        // Hareket Süresi
         int floorDifference = Mathf.Abs(targetFloor - currentFloor);
         yield return new WaitForSeconds(floorDifference * timePerFloor);
 
-        //  Hedef Kata Ulaş
+        // Hedef Kata Ulaş
         currentFloor = targetFloor;
         Debug.Log("Kata ulaşıldı: " + currentFloor);
 
-        //  Kapıyı Otomatik Aç
+        // Kapıyı Otomatik Aç
         doorController.SetDoorState(DoorState.autoOpen);
 
+        // 🔥 Breakdown Manager'a haber ver
+        if (breakdownManager != null)
+            breakdownManager.NotifyFloorReached();
+
         // Hedef Kontrolü
-        CheckTargetFloor();
+        if (currentFloor == dayManager.GetCurrentTargetFloor())
+        {
+            dayManager.CompleteDay();
+        }
 
         isMoving = false;
     }
 
-    private void CheckTargetFloor()
+    // Breakdown için anında zıplatma
+    public void ForceMoveInstant(int newFloor)
     {
-        if (currentFloor == dayManager.GetCurrentTargetFloor())
-        {
-            dayManager.CompleteDay(); 
-        }
+        currentFloor = newFloor;
+        Debug.Log("Force Move → Yeni kat: " + newFloor);
+
+        // Anında kapıyı açık bırak
+        doorController.SetDoorState(DoorState.autoOpen);
+    }
+
+    public int GetCurrentFloor()
+    {
+        return currentFloor;
     }
 }
+
