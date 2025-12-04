@@ -6,12 +6,12 @@ using System.Collections.Generic;
 public class BreakdownManager : MonoBehaviour
 {
     [Header("References")]
-    public ElevatorController elevator;
-    public DoorController doorController;
-    public List<Button> floorButtons;
+    [SerializeField] private ElevatorController elevator;
+    [SerializeField] private DoorController doorController;
+    [SerializeField] private List<Button> floorButtons;
 
     [Header("Risk Settings")]
-    public float quickMoveThreshold = 1.5f;
+    public float quickMoveLimit = 5f;
     public int maxRisk = 3;
 
     private int riskLevel = 0;
@@ -32,9 +32,10 @@ public class BreakdownManager : MonoBehaviour
         if (inBreakdown) return;
 
         // Hızlı kullanıldı mı?
-        if (timeSinceLastMove < quickMoveThreshold)
+        if (timeSinceLastMove < quickMoveLimit)
         {
             riskLevel++;
+            Debug.Log("Risk seviyesi arttı: " + riskLevel);
             TryBreakdown();
         }
 
