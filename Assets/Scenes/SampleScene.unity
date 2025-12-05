@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &242402107 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3766805299619849779, guid: b6704cd445547f04baabae52b166a969, type: 3}
+  m_PrefabInstance: {fileID: 843396374}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d3205e915decd41939c0899d19c299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &373214597 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
@@ -401,7 +412,7 @@ PrefabInstance:
     - target: {fileID: 1319947904729603455, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: dayManager
       value: 
-      objectReference: {fileID: 1073328805}
+      objectReference: {fileID: 373214597}
     - target: {fileID: 1319947904729603455, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: elevatorController
       value: 
@@ -409,7 +420,7 @@ PrefabInstance:
     - target: {fileID: 1614503209786710523, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: dayManager
       value: 
-      objectReference: {fileID: 1073328805}
+      objectReference: {fileID: 373214597}
     - target: {fileID: 1614503209786710523, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: elevatorController
       value: 
@@ -441,11 +452,11 @@ PrefabInstance:
     - target: {fileID: 1704796229603943350, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: dayManager
       value: 
-      objectReference: {fileID: 1073328805}
+      objectReference: {fileID: 373214597}
     - target: {fileID: 1704796229603943350, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: elevatorController
       value: 
-      objectReference: {fileID: 2027153973}
+      objectReference: {fileID: 613404327}
     - target: {fileID: 1950978254585484996, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -530,6 +541,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3766805299619849779, guid: b6704cd445547f04baabae52b166a969, type: 3}
+      propertyPath: elevator
+      value: 
+      objectReference: {fileID: 613404327}
     - target: {fileID: 3883944140603485677, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -557,7 +572,7 @@ PrefabInstance:
     - target: {fileID: 4898697199942962940, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: dayManager
       value: 
-      objectReference: {fileID: 1073328805}
+      objectReference: {fileID: 373214597}
     - target: {fileID: 4898697199942962940, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: elevatorController
       value: 
@@ -565,7 +580,7 @@ PrefabInstance:
     - target: {fileID: 5304811070986635273, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: dayManager
       value: 
-      objectReference: {fileID: 1073328805}
+      objectReference: {fileID: 373214597}
     - target: {fileID: 5304811070986635273, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: elevatorController
       value: 
@@ -701,11 +716,11 @@ PrefabInstance:
     - target: {fileID: 6682475576776545072, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: dayManager
       value: 
-      objectReference: {fileID: 1073328805}
+      objectReference: {fileID: 373214597}
     - target: {fileID: 6682475576776545072, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: elevatorController
       value: 
-      objectReference: {fileID: 2027153973}
+      objectReference: {fileID: 613404327}
     - target: {fileID: 6938385132436176092, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: elevator
       value: 
@@ -721,7 +736,7 @@ PrefabInstance:
     - target: {fileID: 8047526097127573900, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: dayManager
       value: 
-      objectReference: {fileID: 1073328805}
+      objectReference: {fileID: 373214597}
     - target: {fileID: 8047526097127573900, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: elevatorController
       value: 
@@ -777,7 +792,7 @@ PrefabInstance:
     - target: {fileID: 8847770845877861462, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: dayManager
       value: 
-      objectReference: {fileID: 1073328805}
+      objectReference: {fileID: 373214597}
     - target: {fileID: 8847770845877861462, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: elevatorController
       value: 
@@ -785,7 +800,7 @@ PrefabInstance:
     - target: {fileID: 8849629294147244038, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: dayManager
       value: 
-      objectReference: {fileID: 1073328805}
+      objectReference: {fileID: 373214597}
     - target: {fileID: 8849629294147244038, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: elevatorController
       value: 
@@ -795,21 +810,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6704cd445547f04baabae52b166a969, type: 3}
---- !u!114 &1073328805
+--- !u!114 &1600739438 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5810261190381256153, guid: b6704cd445547f04baabae52b166a969, type: 3}
+  m_PrefabInstance: {fileID: 843396374}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 239d476d8dfb0e643adf3755d7bae030, type: 3}
+  m_Script: {fileID: 11500000, guid: 6023a2ea9fdb7aa4381777a15de5feac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTargetFloor: 10
-  targetFloorIncrement: 5
-  firstFloor: 1
 --- !u!1 &1688636069
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,11 +911,15 @@ PrefabInstance:
     - target: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
       propertyPath: dayManager
       value: 
-      objectReference: {fileID: 1073328805}
+      objectReference: {fileID: 373214597}
     - target: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
       propertyPath: doorController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1600739438}
+    - target: {fileID: 3092569795747704720, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
+      propertyPath: breakdownManager
+      value: 
+      objectReference: {fileID: 242402107}
     - target: {fileID: 3634087211888275999, guid: efa662df82bcadb4ba57fb96c35580f1, type: 3}
       propertyPath: m_Name
       value: GameManager
