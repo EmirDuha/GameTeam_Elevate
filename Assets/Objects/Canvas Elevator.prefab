@@ -1820,7 +1820,7 @@ GameObject:
   - component: {fileID: 4425674761712540245}
   - component: {fileID: 3614659993871886671}
   - component: {fileID: 2949837840053370780}
-  - component: {fileID: 3741057013615705369}
+  - component: {fileID: 3766805299619849779}
   m_Layer: 5
   m_Name: Canvas Elevator
   m_TagString: Untagged
@@ -1978,7 +1978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundOnIcon: {fileID: 8494297445109321985}
   SoundOffIcon: {fileID: 7086845624271339248}
---- !u!114 &3741057013615705369
+--- !u!114 &3766805299619849779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2004,10 +2004,10 @@ MonoBehaviour:
   - {fileID: 9118593387401853835}
   - {fileID: 3060396381815879206}
   - {fileID: 1231677538109164242}
-  - {fileID: 9042261203915277799}
   - {fileID: 6347988090300166717}
-  quickMoveLimit: 1.5
-  maxRisk: 3
+  - {fileID: 9042261203915277799}
+  quickMoveLimit: 5
+  quickMove_riskIncrease: 50
 --- !u!1 &7787941298050326181
 GameObject:
   m_ObjectHideFlags: 0
