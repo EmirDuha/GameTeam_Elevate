@@ -6,47 +6,39 @@ using UnityEngine.UI;
 public class soundmanager : MonoBehaviour
 //umarım çalışır ilk unity projem bu.
 {
-  [SerializeField] private UnityEngine.UI.Image SoundOnIcon;
-  [SerializeField] private UnityEngine.UI.Image SoundOffIcon;  
+    [SerializeField] private UnityEngine.UI.Image SoundOnIcon;
+    [SerializeField] private UnityEngine.UI.Image SoundOffIcon;
 
-private bool ismuted;
+    private bool ismuted;
 
-private void Start()
+    private void Start()
     {
-        if(!PlayerPrefs.HasKey("ismuted"))
-        {
-            PlayerPrefs.SetInt("ismuted",0); 
-            Load();
-        }
+        PlayerPrefs.SetInt("ismuted", 1);
+        Load();
 
+        UpdateButtonIcon();
+        AudioListener.pause = ismuted;
+    }
+
+
+    public void OnButtonPress()
+    {
+        if (!ismuted)
+        {
+            ismuted = true;
+            AudioListener.pause = true;
+        }
         else
         {
-            Load();
-        }
 
-     UpdateButtonIcon();
-     AudioListener.pause=ismuted;
-    }       
-   
-
-  public void OnButtonPress()
-  {
-    if (! ismuted)
-    {
-        ismuted = true;
-        AudioListener.pause=true;
-    }
-else
-        {
-            
             ismuted = false;
-            AudioListener.pause=false;
+            AudioListener.pause = false;
         }
-    
-    Save();
-    UpdateButtonIcon();
-     }
-private void UpdateButtonIcon()
+
+        Save();
+        UpdateButtonIcon();
+    }
+    private void UpdateButtonIcon()
     {
         if (ismuted)
         {
@@ -59,9 +51,9 @@ private void UpdateButtonIcon()
             SoundOffIcon.enabled = true;
         }
     }
-     private void Load()
+    private void Load()
     {
-        ismuted=PlayerPrefs.GetInt("ismuted")==1;
+        ismuted = PlayerPrefs.GetInt("ismuted") == 1;
 
     }
 
@@ -70,4 +62,4 @@ private void UpdateButtonIcon()
         PlayerPrefs.SetInt("ismuted", ismuted ? 1 : 0);
 
     }
-    }
+}
