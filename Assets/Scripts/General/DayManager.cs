@@ -12,7 +12,7 @@ public class DayManager : MonoBehaviour
     public void StartNewDay()
     {
         currentTargetFloor = firstTargetFloor + (currentDay - 1) * targetFloorIncrement;
-        Debug.Log("Starting to day " + currentDay + "with target floor " + currentTargetFloor);
+        Debug.Log("Starting to day " + currentDay + " with target floor " + currentTargetFloor);
     }
 
     public void CompleteDay()
