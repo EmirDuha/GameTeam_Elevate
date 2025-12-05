@@ -11,10 +11,10 @@ public class BreakdownManager : MonoBehaviour
     [SerializeField] private List<Button> floorButtons;
 
     [Header("Risk Settings")]
-    public float quickMoveLimit = 5f;
-    public int maxRisk = 3;
-
-    private int riskLevel = 0;
+    [SerializeField] private float quickMoveLimit = 5f; // Katlar arası max güvenli süre
+    [SerializeField] private int quickMove_riskIncrease = 50; // Her hızlı çıkışta artan risk (%)
+    
+    private int riskLevel = 0; // 0 - 100 arası tutulur
     private float timeSinceLastMove = 99f;
     private bool inBreakdown = false;
 
@@ -26,28 +26,40 @@ public class BreakdownManager : MonoBehaviour
             timeSinceLastMove += Time.deltaTime;
     }
 
-    // Asansör her kata ulaştığında çağırılır
+
+    // ◆ ELEVATOR KAT DEĞİŞTİRDİĞİNDE ÇAĞRILIR
     public void NotifyFloorReached()
     {
         if (inBreakdown) return;
 
-        // Hızlı kullanıldı mı?
         if (timeSinceLastMove < quickMoveLimit)
         {
-            riskLevel++;
-            Debug.Log("Risk seviyesi arttı: " + riskLevel);
-            TryBreakdown();
+            riskLevel += quickMove_riskIncrease;
+            riskLevel = Mathf.Clamp(riskLevel, 0, 100);
+            Debug.Log("⚠ Risk Arttı → %" + riskLevel);
         }
 
         timeSinceLastMove = 0f;
     }
 
-    private void TryBreakdown()
-    {
-        if (riskLevel < maxRisk) return;
 
-        StartCoroutine(BreakdownSequence());
+    // ◆ BUTON TIKLANDIĞINDA ELEVATORCONTROLLER BURAYI ÇAĞIRACAK
+    public bool CheckBreakdownBeforeMove()
+    {
+        if (inBreakdown) return true;
+
+        int roll = Random.Range(0, 100);
+        Debug.Log($"🎲 Arıza Zar Atışı: {roll} (Risk: %{riskLevel})");
+
+        if (roll < riskLevel)
+        {
+            StartCoroutine(BreakdownSequence());
+            return true; 
+        }
+
+        return false; 
     }
+
 
     private IEnumerator BreakdownSequence()
     {
@@ -55,14 +67,11 @@ public class BreakdownManager : MonoBehaviour
 
         Debug.Log("🔥 ASANSÖR ARIZAYA GİRDİ!");
 
-        // Butonları kilitle
         foreach (var b in floorButtons)
             b.interactable = false;
 
-        // Kapıyı açık bırak
         doorController.SetDoorState(DoorState.autoOpen);
 
-        // Rastgele aşağı düşürme
         int current = elevator.GetCurrentFloor();
         int drop = Random.Range(1, 4);
         int newFloor = Mathf.Max(1, current - drop);
@@ -72,6 +81,7 @@ public class BreakdownManager : MonoBehaviour
         yield break;
     }
 
+
     public void ResetBreakdown()
     {
         inBreakdown = false;
@@ -80,6 +90,6 @@ public class BreakdownManager : MonoBehaviour
         foreach (var b in floorButtons)
             b.interactable = true;
 
-        Debug.Log("Breakdown resetlendi.");
+        Debug.Log("🔧 Arıza Resetlendi");
     }
 }

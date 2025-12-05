@@ -6,27 +6,42 @@ public class ElevatorController : MonoBehaviour
     [Header("References")]
     [SerializeField] private DoorController doorController;
     [SerializeField] private DayManager dayManager;
-    [SerializeField] private BreakdownManager breakdownManager; // 🔥 EKLENDİ
+    [SerializeField] private BreakdownManager breakdownManager;
 
     [Header("Settings")]
     [SerializeField] private float timePerFloor = 1.0f; // Her kat arası bekleme süresi
 
-    private int currentFloor = 1; // Başlangıç katı
+    private int currentFloor; // Başlangıç katı
     private bool isMoving = false;
+
+    private void Start()
+    {
+        currentFloor = dayManager.firstFloor; // Başlangıç katını ayarla
+    }
+
+    // Şu anki katı döndürür
+    public int GetCurrentFloor()
+    {
+        return currentFloor;
+    }
 
     // UI Butonundan bu fonksiyon çağırılacak
     public void GoToFloor(int targetFloor)
     {
-        if (breakdownManager != null && breakdownManager.IsInBreakdown) // 🔥 Arıza varsa hareket yok
-        {
-            Debug.Log("Asansör arızalı, butonlar devre dışı!");
+        if (currentFloor == targetFloor)
             return;
+
+        else
+        {
+            if (breakdownManager.CheckBreakdownBeforeMove())
+                return;
+
+            if (isMoving) return;
+
+            StartCoroutine(MoveProcess(targetFloor));
         }
-
-        if (isMoving || currentFloor == targetFloor) return;
-
-        StartCoroutine(MoveProcess(targetFloor));
     }
+
 
     private IEnumerator MoveProcess(int targetFloor)
     {
@@ -48,7 +63,7 @@ public class ElevatorController : MonoBehaviour
         // Kapıyı Otomatik Aç
         doorController.SetDoorState(DoorState.autoOpen);
 
-        // 🔥 Breakdown Manager'a haber ver
+        // Breakdown Manager'a haber ver
         if (breakdownManager != null)
             breakdownManager.NotifyFloorReached();
 
@@ -56,6 +71,7 @@ public class ElevatorController : MonoBehaviour
         if (currentFloor == dayManager.GetCurrentTargetFloor())
         {
             dayManager.CompleteDay();
+            currentFloor = dayManager.firstFloor;
         }
 
         isMoving = false;
@@ -71,9 +87,5 @@ public class ElevatorController : MonoBehaviour
         doorController.SetDoorState(DoorState.autoOpen);
     }
 
-    public int GetCurrentFloor()
-    {
-        return currentFloor;
-    }
 }
 

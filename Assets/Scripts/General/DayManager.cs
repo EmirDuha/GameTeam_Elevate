@@ -7,6 +7,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private int targetFloorIncrement = 5;
     int currentTargetFloor;
     int currentDay = 1;
+    public int firstFloor = 1;
 
     public void StartNewDay()
     {
