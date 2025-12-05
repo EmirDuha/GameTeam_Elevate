@@ -6,7 +6,7 @@ public class FloorButton : MonoBehaviour
     [SerializeField] private int floorNumber;
     [SerializeField] private ElevatorController elevatorController;
     [SerializeField] private DayManager dayManager;
-
+    
     public void Setup(int floor, ElevatorController controller)
     {
         floorNumber = floor;
