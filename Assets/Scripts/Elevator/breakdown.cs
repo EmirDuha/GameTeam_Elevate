@@ -8,6 +8,7 @@ public class BreakdownManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private ElevatorController elevator;
     [SerializeField] private DoorController doorController;
+    [SerializeField] private StressSystem stressSystem;
     [SerializeField] private List<Button> floorButtons;
 
     [Header("Risk Settings")]
@@ -15,7 +16,8 @@ public class BreakdownManager : MonoBehaviour
     public int skippedFloorCount = 0;
     [SerializeField] private int quickMove_riskIncrease = 50; // Her hızlı çıkışta artan risk (%)
     [SerializeField] private int skippedFloor_riskIncrease = 20; // Atlanan her kat için artan risk (%)
-    
+    [SerializeField] private float stressIncrease = 2f;
+    [SerializeField] private float stressDecrease = 2f;
     private int riskLevel = 0;
     private float timeSinceLastMove = 99f;
     private bool inBreakdown = false;
@@ -70,6 +72,8 @@ public class BreakdownManager : MonoBehaviour
     private IEnumerator BreakdownSequence()
     {
         inBreakdown = true;
+        stressSystem.isUnderStress = true;
+        stressSystem.stressIncreaseRate += stressIncrease;
 
         Debug.Log("🔥 ASANSÖR ARIZAYA GİRDİ!");
 
@@ -91,6 +95,9 @@ public class BreakdownManager : MonoBehaviour
     {
         inBreakdown = false;
         riskLevel = 0;
+
+        stressSystem.isUnderStress = false;
+        stressSystem.stressIncreaseRate -= stressDecrease;
 
         foreach (var b in floorButtons)
             b.interactable = true;
