@@ -8,6 +8,7 @@ public class soundmanager : MonoBehaviour
 {
     [SerializeField] private UnityEngine.UI.Image SoundOnIcon;
     [SerializeField] private UnityEngine.UI.Image SoundOffIcon;
+    [SerializeField] private StressSystem stressSystem;
 
     private bool ismuted;
 
@@ -27,12 +28,14 @@ public class soundmanager : MonoBehaviour
         {
             ismuted = true;
             AudioListener.pause = true;
+            stressSystem.isMusicOn = false;
         }
         else
         {
 
             ismuted = false;
             AudioListener.pause = false;
+            stressSystem.isMusicOn = true;
         }
 
         Save();

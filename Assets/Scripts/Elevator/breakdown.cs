@@ -8,13 +8,17 @@ public class BreakdownManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private ElevatorController elevator;
     [SerializeField] private DoorController doorController;
+    [SerializeField] private StressSystem stressSystem;
     [SerializeField] private List<Button> floorButtons;
 
     [Header("Risk Settings")]
     [SerializeField] private float quickMoveLimit = 5f; // Katlar arası max güvenli süre
+    public int skippedFloorCount = 0;
     [SerializeField] private int quickMove_riskIncrease = 50; // Her hızlı çıkışta artan risk (%)
-    
-    private int riskLevel = 0; // 0 - 100 arası tutulur
+    [SerializeField] private int skippedFloor_riskIncrease = 20; // Atlanan her kat için artan risk (%)
+    [SerializeField] private float stressIncrease = 2f;
+    [SerializeField] private float stressDecrease = 2f;
+    private int riskLevel = 0;
     private float timeSinceLastMove = 99f;
     private bool inBreakdown = false;
 
@@ -26,9 +30,7 @@ public class BreakdownManager : MonoBehaviour
             timeSinceLastMove += Time.deltaTime;
     }
 
-
-    // ◆ ELEVATOR KAT DEĞİŞTİRDİĞİNDE ÇAĞRILIR
-    public void NotifyFloorReached()
+    public void RiskCalculations()
     {
         if (inBreakdown) return;
 
@@ -40,10 +42,17 @@ public class BreakdownManager : MonoBehaviour
         }
 
         timeSinceLastMove = 0f;
+
+        if (skippedFloorCount > 0)
+        {
+            int addedRisk = skippedFloorCount * skippedFloor_riskIncrease;
+            riskLevel += addedRisk;
+            riskLevel = Mathf.Clamp(riskLevel, 0, 100);
+            Debug.Log($"⚠ Atlanan {skippedFloorCount} kat için risk arttı → %" + riskLevel);
+            skippedFloorCount = 0;
+        }
     }
 
-
-    // ◆ BUTON TIKLANDIĞINDA ELEVATORCONTROLLER BURAYI ÇAĞIRACAK
     public bool CheckBreakdownBeforeMove()
     {
         if (inBreakdown) return true;
@@ -60,10 +69,11 @@ public class BreakdownManager : MonoBehaviour
         return false; 
     }
 
-
     private IEnumerator BreakdownSequence()
     {
         inBreakdown = true;
+        stressSystem.isUnderStress = true;
+        stressSystem.stressIncreaseRate += stressIncrease;
 
         Debug.Log("🔥 ASANSÖR ARIZAYA GİRDİ!");
 
@@ -81,11 +91,12 @@ public class BreakdownManager : MonoBehaviour
         yield break;
     }
 
-
     public void ResetBreakdown()
     {
         inBreakdown = false;
         riskLevel = 0;
+
+        stressSystem.isUnderStress = false;
 
         foreach (var b in floorButtons)
             b.interactable = true;

@@ -28,6 +28,8 @@ public class ElevatorController : MonoBehaviour
     // UI Butonundan bu fonksiyon çağırılacak
     public void GoToFloor(int targetFloor)
     {
+        SkippedFloorCounter(targetFloor);
+
         if (currentFloor == targetFloor)
             return;
 
@@ -40,8 +42,14 @@ public class ElevatorController : MonoBehaviour
 
             StartCoroutine(MoveProcess(targetFloor));
         }
+
     }
 
+    private void SkippedFloorCounter(int targetFloor)
+    {
+        if (Mathf.Abs(targetFloor - currentFloor) > 0)
+            breakdownManager.skippedFloorCount += Mathf.Abs(targetFloor - currentFloor) - 1;
+    }
 
     private IEnumerator MoveProcess(int targetFloor)
     {
@@ -65,12 +73,13 @@ public class ElevatorController : MonoBehaviour
 
         // Breakdown Manager'a haber ver
         if (breakdownManager != null)
-            breakdownManager.NotifyFloorReached();
+            breakdownManager.RiskCalculations();
 
         // Hedef Kontrolü
         if (currentFloor == dayManager.GetCurrentTargetFloor())
         {
             dayManager.CompleteDay();
+            breakdownManager.ResetBreakdown();
             currentFloor = dayManager.firstFloor;
         }
 

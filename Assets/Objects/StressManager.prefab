@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4912474971122770575
+--- !u!1 &7558160770572148800
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2614177722736201615}
-  - component: {fileID: 8038257530574485126}
+  - component: {fileID: 3338738234455785709}
+  - component: {fileID: 7605782124658686746}
   m_Layer: 0
-  m_Name: Daymanager
+  m_Name: StressManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2614177722736201615
+--- !u!4 &3338738234455785709
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4912474971122770575}
+  m_GameObject: {fileID: 7558160770572148800}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2108674, y: -1.1614144, z: 0.09768609}
+  m_LocalPosition: {x: -0.122552045, y: -2.2765086, z: 0.004020203}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8038257530574485126
+--- !u!114 &7605782124658686746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4912474971122770575}
+  m_GameObject: {fileID: 7558160770572148800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 239d476d8dfb0e643adf3755d7bae030, type: 3}
+  m_Script: {fileID: 11500000, guid: 390db1cc2f84610428e1e241c56b690d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stressSystem: {fileID: 0}
-  firstTargetFloor: 2
-  targetFloorIncrement: 3
-  firstFloor: 1
+  stressLevel: 0
+  stressIncreaseRate: 10
+  stressDecreaseRate: 4
+  maxStressLevel: 100
+  minStressLevel: 0
+  isUnderStress: 0
+  inMaxStressState: 0
+  StressBar: {fileID: 0}

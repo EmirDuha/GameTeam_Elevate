@@ -12,6 +12,7 @@ public class DoorController : MonoBehaviour
 {
     [SerializeField] private DoorState currentState;
     [SerializeField] private GameObject doorPanel;
+    [SerializeField] private StressSystem stressSystem;
 
     public bool IsDoorOpen => 
     currentState == DoorState.autoOpen || currentState == DoorState.manualOpen;
@@ -64,21 +65,25 @@ public class DoorController : MonoBehaviour
     private void DoorAutoOpen()
     {
         Debug.Log("Door is open");
+        stressSystem.isUnderStress = false;
 
     }
 
     private void DoorAutoClosed()
     {
         Debug.Log("Door is closed");
+        stressSystem.isUnderStress = false;
     }
 
     private void DoorManualOpen()
     {
         Debug.Log("Door is manually open");
+        stressSystem.isUnderStress = false;
     }
 
     private void DoorManualClosed()
     {
         Debug.Log("Door is manually closed");
+        stressSystem.isUnderStress = true;
     }
 }
