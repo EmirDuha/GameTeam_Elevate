@@ -5,16 +5,19 @@ public class StressSystem : MonoBehaviour
     [Header("Stress Settings")]
     [SerializeField] private float stressLevel = 0f;
     [SerializeField] public float stressIncreaseRate = 10f;
-    [SerializeField] private float stressDecreaseRate = 4f;
+    [SerializeField] private float idleStressDecreaseRate = 4f;
+    [SerializeField] private float musicStressDecreaseRate = 6f;
     [SerializeField] private float maxStressLevel = 100f;
     [SerializeField] private float minStressLevel = 0f;
     public bool isUnderStress = false;
+    public bool isMusicOn = false;
     public bool inMaxStressState = false;
 
     [Header("Object References")]
     [SerializeField] private UnityEngine.UI.Slider StressBar;
 
-    private void Start(){
+    private void Start()
+    {
         stressLevel = minStressLevel;
     }
 
@@ -26,17 +29,27 @@ public class StressSystem : MonoBehaviour
         }
         else
         {
-            if (stressLevel > minStressLevel)
-            DecreaseStress(stressDecreaseRate);
+            DecreaseStress(idleStressDecreaseRate);
+        }
+
+        if (isMusicOn)
+        {
+            DecreaseStress(musicStressDecreaseRate);
         }
 
         if (!inMaxStressState)
-        StressBar.value = stressLevel / maxStressLevel;
+            StressBar.value = stressLevel / maxStressLevel;
     }
 
     public float GetStressLevel()
     {
         return stressLevel;
+    }
+
+    public void SetStressLevel(float level)
+    {
+        stressLevel = Mathf.Clamp(level, minStressLevel, maxStressLevel);
+        CheckMaxStressState();
     }
 
     private void IncreaseStress(float amount)
@@ -48,8 +61,19 @@ public class StressSystem : MonoBehaviour
 
     private void DecreaseStress(float amount)
     {
-        stressLevel -= amount * Time.deltaTime;
-        stressLevel = Mathf.Clamp(stressLevel, minStressLevel, maxStressLevel);
+        if (inMaxStressState) return;
+        if (stressLevel > minStressLevel)
+        {
+            stressLevel -= amount * Time.deltaTime;
+            stressLevel = Mathf.Clamp(stressLevel, minStressLevel, maxStressLevel);
+        }
+    }
+
+    public void ResetStress()
+    {
+        stressLevel = minStressLevel;
+        isUnderStress = false;
+        inMaxStressState = false;
     }
 
     private void CheckMaxStressState()

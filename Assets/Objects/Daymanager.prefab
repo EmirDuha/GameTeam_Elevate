@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239d476d8dfb0e643adf3755d7bae030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stressSystem: {fileID: 0}
   firstTargetFloor: 2
   targetFloorIncrement: 3
+  firstFloor: 1

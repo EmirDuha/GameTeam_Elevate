@@ -97,7 +97,6 @@ public class BreakdownManager : MonoBehaviour
         riskLevel = 0;
 
         stressSystem.isUnderStress = false;
-        stressSystem.stressIncreaseRate -= stressDecrease;
 
         foreach (var b in floorButtons)
             b.interactable = true;

@@ -409,6 +409,10 @@ PrefabInstance:
       propertyPath: elevatorController
       value: 
       objectReference: {fileID: 613404327}
+    - target: {fileID: 2949837840053370780, guid: b6704cd445547f04baabae52b166a969, type: 3}
+      propertyPath: stressSystem
+      value: 
+      objectReference: {fileID: 1494252953}
     - target: {fileID: 3078429431404424663, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -553,46 +557,6 @@ PrefabInstance:
       propertyPath: elevatorController
       value: 
       objectReference: {fileID: 613404327}
-    - target: {fileID: 8812264343370399935, guid: b6704cd445547f04baabae52b166a969, type: 3}
-      propertyPath: m_Colors.m_NormalColor.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812264343370399935, guid: b6704cd445547f04baabae52b166a969, type: 3}
-      propertyPath: m_Colors.m_PressedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812264343370399935, guid: b6704cd445547f04baabae52b166a969, type: 3}
-      propertyPath: m_Colors.m_PressedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812264343370399935, guid: b6704cd445547f04baabae52b166a969, type: 3}
-      propertyPath: m_Colors.m_PressedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812264343370399935, guid: b6704cd445547f04baabae52b166a969, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812264343370399935, guid: b6704cd445547f04baabae52b166a969, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812264343370399935, guid: b6704cd445547f04baabae52b166a969, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812264343370399935, guid: b6704cd445547f04baabae52b166a969, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812264343370399935, guid: b6704cd445547f04baabae52b166a969, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812264343370399935, guid: b6704cd445547f04baabae52b166a969, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8847770845877861462, guid: b6704cd445547f04baabae52b166a969, type: 3}
       propertyPath: dayManager
       value: 
@@ -847,6 +811,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Daymanager
       objectReference: {fileID: 0}
+    - target: {fileID: 8038257530574485126, guid: 99e336e0b7be05943be9db6673a7544a, type: 3}
+      propertyPath: stressSystem
+      value: 
+      objectReference: {fileID: 1494252953}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

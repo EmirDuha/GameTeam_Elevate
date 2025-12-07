@@ -2142,6 +2142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundOnIcon: {fileID: 8494297445109321985}
   SoundOffIcon: {fileID: 7086845624271339248}
+  stressSystem: {fileID: 0}
 --- !u!114 &3766805299619849779
 MonoBehaviour:
   m_ObjectHideFlags: 0
