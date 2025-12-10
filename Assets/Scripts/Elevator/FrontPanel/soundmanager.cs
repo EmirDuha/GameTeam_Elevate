@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class soundmanager : MonoBehaviour
 //umarım çalışır ilk unity projem bu.
 {
-    [SerializeField] private UnityEngine.UI.Image SoundOnIcon;
-    [SerializeField] private UnityEngine.UI.Image SoundOffIcon;
     [SerializeField] private StressSystem stressSystem;
 
     private bool ismuted;
@@ -16,8 +14,7 @@ public class soundmanager : MonoBehaviour
     {
         PlayerPrefs.SetInt("ismuted", 1);
         Load();
-
-        UpdateButtonIcon();
+        
         AudioListener.pause = ismuted;
     }
 
@@ -39,21 +36,8 @@ public class soundmanager : MonoBehaviour
         }
 
         Save();
-        UpdateButtonIcon();
     }
-    private void UpdateButtonIcon()
-    {
-        if (ismuted)
-        {
-            SoundOnIcon.enabled = true;
-            SoundOffIcon.enabled = false;
-        }
-        else
-        {
-            SoundOnIcon.enabled = false;
-            SoundOffIcon.enabled = true;
-        }
-    }
+
     private void Load()
     {
         ismuted = PlayerPrefs.GetInt("ismuted") == 1;
