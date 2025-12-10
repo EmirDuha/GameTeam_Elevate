@@ -11,6 +11,7 @@ public class StressSystem : MonoBehaviour
     [SerializeField] private float minStressLevel = 0f;
     public bool isUnderStress = false;
     public bool isMusicOn = false;
+    public bool isThreatActive = false;
     public bool inMaxStressState = false;
 
     [Header("Object References")]
@@ -35,6 +36,11 @@ public class StressSystem : MonoBehaviour
         if (isMusicOn)
         {
             DecreaseStress(musicStressDecreaseRate);
+        }
+
+        if (isThreatActive)
+        {
+            IncreaseStress(stressIncreaseRate / 2);
         }
 
         if (!inMaxStressState)
