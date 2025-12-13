@@ -10,6 +10,7 @@ public class BreakdownManager : MonoBehaviour
     [SerializeField] private DoorController doorController;
     [SerializeField] private StressSystem stressSystem;
     [SerializeField] private List<Button> floorButtons;
+    [SerializeField] private WireTaskManager wireTaskManager;
 
     [Header("Risk Settings")]
     [SerializeField] private float quickMoveLimit = 5f; // Katlar arası max güvenli süre
@@ -28,6 +29,16 @@ public class BreakdownManager : MonoBehaviour
     {
         if (!inBreakdown)
             timeSinceLastMove += Time.deltaTime;
+
+    
+        if (Input.GetKeyDown(KeyCode.B))
+    {
+        if (!inBreakdown)
+        {
+            Debug.Log("🧪 TEST MODU: Arıza zorla tetiklendi!");
+            StartCoroutine(BreakdownSequence());
+        }
+    }
     }
 
     public void RiskCalculations()
@@ -87,6 +98,10 @@ public class BreakdownManager : MonoBehaviour
         int newFloor = Mathf.Max(1, current - drop);
 
         elevator.ForceMoveInstant(newFloor);
+        if(wireTaskManager != null)
+        {
+            wireTaskManager.StartGame();
+        }
 
         yield break;
     }
